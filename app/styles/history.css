@@ -1,0 +1,30 @@
+
+.history-t-featuredImage {
+  float: left;
+  width: 300px;
+  margin-right: 15px;
+}
+
+.d-col .ht-title {
+  border-bottom: 0px;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+.d-col .panel {
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-radius: 0px;
+}
+
+.d-col .panel-body {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.featured-image-findOne {
+  float: left;
+  max-width: 322px;
+  margin-right: 12px;
+}

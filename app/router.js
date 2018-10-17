@@ -7,6 +7,17 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+
+  this.route('history', function() {
+    this.route('item', { path: ':id' }, function(){});
+  });
+
+  this.route('learning-object', function() {
+    this.route('item', { path: ':id' }, function(){});
+  });
+
+
+  this.route('not-found', { path: '/*path' });
 });
 
 export default Router;

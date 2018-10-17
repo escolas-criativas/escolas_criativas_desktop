@@ -1,0 +1,77 @@
+@import 'theme.css';
+@import 'history.css';
+
+body {
+  min-height: 100vh;
+}
+
+body .menu_version2 {
+  display: none;
+}
+
+body.index .menu_version2 {
+  display: block;
+}
+
+body .home-icon-row {
+  display: block;
+}
+
+body.index .home-icon-row {
+  display: none;
+}
+
+
+.container {
+  padding: 0 30px;
+}
+
+.topo .container {
+  height: auto;
+}
+
+.navbar-header {
+  float: none;
+  height: 184px;
+}
+
+.home-main-menu {
+  margin-top: 50px;
+}
+
+.home-main-menu button {
+  font-size: 18px;
+  color: #333;
+  background-color: #e1f9f8;
+  border-color: #ccc;
+}
+
+#contentarea {
+  min-height: auto;
+}
+
+.features_sec27 img {
+  width: 100%;
+}
+
+.moduletable .custom img {
+  padding: 0px 20px 0px 5px;
+}
+
+.social-icon li {
+  margin: 20px 6px 0 6px;
+}
+
+.breadcrumb {
+  text-align: left;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.social-icon {
+  margin-top: 25px;
+}
+
+.btn-home {
+  font-size: 32px;
+}

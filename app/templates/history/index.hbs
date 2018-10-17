@@ -1,0 +1,162 @@
+<ol class="breadcrumb">
+  <li>
+    {{#link-to 'index'}}
+      Início
+    {{/link-to}}
+  </li>
+  <li class="active">Práticas pedagógicas</li>
+</ol>
+
+<div class="history-findAll">
+  <div class="history-findAll-header">
+    <div class="page-header">
+      <h2 class="hfah-title headline">Práticas pedagógicas
+      </h2>
+    </div>
+
+    <div class="history-search">
+      <form class="form-inline">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-ls-12">
+            <div class="form-group">
+              <label for="search-q">Filtro: </label>
+              <input type="text" id="search-q" name="q" class="form-control" placeholder="Buscar no título ou texto ..." value="">
+            </div>
+          </div>
+          <div class="seccond-line col-sm-12 col-md-12 col-ls-12">
+            <div class="form-group">
+              <label>Disciplinas: </label>
+
+              <select name="disciplinas" class="form-control">
+                <option value="">Qualquer</option>
+                  <option value="artes">artes</option>
+                  <option value="biologia">biologia</option>
+                  <option value="ciências">ciências</option>
+                  <option value="ciências sociais">ciências sociais</option>
+                  <option value="educação artistica">educação artistica</option>
+                  <option value="educação física">educação física</option>
+                  <option value="filosofia">filosofia</option>
+                  <option value="fisica">fisica</option>
+                  <option value="geografia">geografia</option>
+                  <option value="história">história</option>
+                  <option value="inglês">inglês</option>
+                  <option value="língua portuguesa">língua portuguesa</option>
+                  <option value="literatura">literatura</option>
+                  <option value="matemática">matemática</option>
+                  <option value="música">música</option>
+                  <option value="quimica">quimica</option>
+                  <option value="sociologia">sociologia</option>
+                  <option value="teatro">teatro</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Temas: </label>
+
+              <select name="temasTransversais" class="form-control">
+                <option value="">Qualquer</option>
+                  <option value="antropologia">antropologia</option>
+                  <option value="cidadania">cidadania</option>
+                  <option value="ciências naturais">ciências naturais</option>
+                  <option value="comunicação">comunicação</option>
+                  <option value="cultura de massa">cultura de massa</option>
+                  <option value="discriminação e preconceito racial">discriminação e preconceito racial</option>
+                  <option value="diversidade">diversidade</option>
+                  <option value="economia">economia</option>
+                  <option value="educação ambiental">educação ambiental</option>
+                  <option value="ética">ética</option>
+                  <option value="família">família</option>
+                  <option value="geologia">geologia</option>
+                  <option value="gerontologia">gerontologia</option>
+                  <option value="inclusão/deficiências">inclusão/deficiências</option>
+                  <option value="meio ambiente">meio ambiente</option>
+                  <option value="MPB">MPB</option>
+                  <option value="orientação sexual">orientação sexual</option>
+                  <option value="orientação sexual">orientação sexual</option>
+                  <option value="pedagogia">pedagogia</option>
+                  <option value="pluralidade cultural">pluralidade cultural</option>
+                  <option value="política">política</option>
+                  <option value="psicologia">psicologia</option>
+                  <option value="redação">redação</option>
+                  <option value="relações de gênero">relações de gênero</option>
+                  <option value="saúde">saúde</option>
+                  <option value="sexualidade">sexualidade</option>
+                  <option value="tecnologias">tecnologias</option>
+                  <option value="tecnologias da informação">tecnologias da informação</option>
+                  <option value="temas locais">temas locais</option>
+                  <option value="trabalho e consumo">trabalho e consumo</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Faixa etária: </label>
+
+              <select name="faixaEtaria" class="form-control">
+                <option value="">Qualquer</option>
+                  <option value="a partir de 14 anos">a partir de 14 anos</option>
+                  <option value="acima de 18 anos">acima de 18 anos</option>
+                  <option value="de 10 a 14 anos">de 10 a 14 anos</option>
+                  <option value="de 14 a 18 anos">de 14 a 18 anos</option>
+                  <option value="de 3 a 7 anos">de 3 a 7 anos</option>
+                  <option value="de 7 a 10 anos">de 7 a 10 anos</option>
+                  <option value="todas as idades">todas as idades</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="seccond-line col-sm-12 col-md-12 col-ls-12">
+            <div class="form-group">
+              <label>Mídia: </label>
+              <div class="checkbox">
+                <label>
+                  <input name="haveImage" type="checkbox"> Imagem
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input name="haveVideo" type="checkbox"> Vídeo
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input name="haveAudio" type="checkbox"> Audio
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input name="haveText" type="checkbox"> Texto
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <button class="btn btn-default" type="submit">
+                <span class="fa fa-search"></span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="list">
+    <div class="d-col">
+      {{#link-to 'history.item' 2}}
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <img alt="imagem de destaque do Projeto Boralá" src="/img/examples/h1/h1_2.jpeg" class="history-t-featuredImage">
+            <h2 class="ht-title">Projeto Boralá</h2>
+            <div class="ht-creator-meta">17/09/2018 SE / Aracaju</div>
+            <div class="ht-creator">
+              <h6 class="ht-creator-displayName">Administrator</h6>
+              <span class="ht-creator-location">RJ / Duque de Caxias</span>
+            </div>
+          </div>
+        </div>
+      {{/link-to}}
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>

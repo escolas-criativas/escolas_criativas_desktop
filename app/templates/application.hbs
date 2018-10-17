@@ -1,5 +1,15 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
+{{partial 'partials/header'}}
 
-{{outlet}}
+<section id="services_home6">
+  <div class="container">
+    <div class="row">
+      <div id="contentarea" class="col-md-12 col-sm-12">
+        <div class="item-page">
+          {{outlet}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{partial 'partials/footer'}}
