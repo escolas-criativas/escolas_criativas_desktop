@@ -1,8 +1,8 @@
 {
-  "name": "desk",
+  "name": "escolas_criativas_desk",
   "version": "0.0.0",
   "private": true,
-  "description": "Small description for desk goes here",
+  "description": "App desktop das escolas criativas com acesso offline aos conteúdos",
   "repository": "",
   "license": "MIT",
   "author": "",

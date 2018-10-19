@@ -18,11 +18,19 @@ You will need the following things properly installed on your computer.
 * `cd desk`
 * `npm install`
 
+## Ember electron commands
+
+ember electron - Run app in Electron with live-reload server
+ember electron:test - Test the app using Electron
+ember electron:test --server - Test with Electron in development server mode
+ember electron:package - Create binaries (.app, .exe, etc)
+ember electron:make - Generate platform specific distributables (installers, distribution packages, etc)
+ember electron:build - Build out Ember app with Electron instrumentation (useful for optimizing multi-platform builds)
+ember electron:assemble - Assemble Electron application project (useful for debugging builds)
+
 ## Running / Development
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
+* `ember electron`
 
 ### Code Generators
 
@@ -40,6 +48,8 @@ Make use of the many generators for code, try `ember help generate` for more det
 * `npm run lint:js -- --fix`
 
 ### Building
+
+* `ember electron:package` generate package
 
 * `ember build` (development)
 * `ember build --environment production` (production)
