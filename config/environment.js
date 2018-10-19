@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'desk',
+    modulePrefix: 'escolas_criativas_desk',
     environment,
     rootURL: '/',
     locationType: 'auto',

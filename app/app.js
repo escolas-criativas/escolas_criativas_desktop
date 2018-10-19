@@ -26,9 +26,6 @@ Route.reopen({
 let comp = new RegExp(location.host);
 
 $('body').on('click', 'a', (event) => {
-  console.log('event>', event, $(this).attr('href'));
-
-
   if (!comp.test( event.currentTarget.href ) ) {
     event.preventDefault();
     let link = event.currentTarget.href;

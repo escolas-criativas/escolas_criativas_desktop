@@ -12,7 +12,8 @@ module.exports = {
     ]
   },
   'electronPackagerConfig': {
-    'packageManager': 'npm'
+    'packageManager': 'npm',
+    'icon': 'public/logo.png'
   },
   'electronWinstallerConfig': {
     'name': 'desk'
