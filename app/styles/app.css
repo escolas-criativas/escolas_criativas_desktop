@@ -75,3 +75,15 @@ body.index .home-icon-row {
 .btn-home {
   font-size: 32px;
 }
+
+
+.link-logo {
+  float: right;
+  width: 12px;
+}
+
+.rodape-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

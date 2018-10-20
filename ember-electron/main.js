@@ -86,3 +86,8 @@ process.on('uncaughtException', (err) => {
   console.log('This is a serious issue that needs to be handled and/or debugged.');
   console.log(`Exception: ${err}`);
 });
+
+
+setTimeout(function() {
+  require('./check-data-update.js')();
+}, 1000);
