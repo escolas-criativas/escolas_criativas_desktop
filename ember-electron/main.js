@@ -67,6 +67,10 @@ app.on('ready', () => {
   });
 });
 
+app.on('browser-window-created',function(e,window) {
+  window.setMenu(null);
+});
+
 // Handle an unhandled error in the main thread
 //
 // Note that 'uncaughtException' is a crude mechanism for exception handling intended to
