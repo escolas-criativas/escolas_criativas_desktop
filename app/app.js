@@ -33,4 +33,8 @@ $('body').on('click', 'a', (event) => {
   }
 });
 
+Array.prototype.random = function () {
+  return this[Math.floor((Math.random()*this.length))];
+}
+
 export default App;

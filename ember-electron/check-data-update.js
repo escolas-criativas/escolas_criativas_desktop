@@ -149,21 +149,21 @@ const updater = {
       let p = folder+'.zip';
 
       mkdirp(folder, (err)=> {
-        if (err) return cb(err);
+        if (err) return next(err);
         let url = this.updateUrl+model+'/items/'+item.id+'.zip';
 
         request(url, (err)=> {
-          if (err) return cb(err);
+          if (err) return next(err);
 
           extract(p, {
             dir: folder
-          }, cb);
+          }, next);
         })
         .pipe(fs.createWriteStream(p));
 
       });
 
-    });
+    }, cb);
   },
 
   downloadEachListFile(info, cb) {

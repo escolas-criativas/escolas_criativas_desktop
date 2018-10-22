@@ -13,15 +13,6 @@ protocolServe({
   protocol,
 });
 
-// Uncomment the lines below to enable Electron's crash reporter
-// For more information, see http://electron.atom.io/docs/api/crash-reporter/
-// electron.crashReporter.start({
-//     productName: 'YourName',
-//     companyName: 'YourCompany',
-//     submitURL: 'https://your-domain.com/url-to-submit',
-//     autoSubmit: true
-// });
-
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
@@ -29,9 +20,19 @@ app.on('window-all-closed', () => {
 });
 
 app.on('ready', () => {
+  protocol.registerFileProtocol('cached', (request, callback) => {
+    const url = request.url.substr(8);
+
+    callback({
+      path: url
+    })
+  }, (error) => {
+    if (error) console.error('Failed to register protocol')
+  });
+
   mainWindow = new BrowserWindow({
     width: 1100,
-    height: 600,
+    height: 600
   });
 
   // If you want to open up dev tools programmatically, call
@@ -91,3 +92,4 @@ process.on('uncaughtException', (err) => {
 setTimeout(function() {
   require('./check-data-update.js')();
 }, 1000);
+

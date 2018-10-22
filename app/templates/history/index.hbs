@@ -148,25 +148,71 @@
   </div>
 
   <div class="list">
-    <div class="d-col">
-      {{#link-to "history.item" 2}}
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <img
-              alt="imagem de destaque do Projeto Boralá"
-              src="/img/examples/h1/h1_2.jpeg"
-              class="history-t-featuredImage"
-            >
-            <h2 class="ht-title">Projeto Boralá</h2>
-            <div class="ht-creator-meta">17/09/2018 SE / Aracaju</div>
-            <div class="ht-creator">
-              <h6 class="ht-creator-displayName">Administrator</h6>
-              <span class="ht-creator-location">RJ / Duque de Caxias</span>
+    {{#each model.records as |record|}}
+      <div class="d-col">
+        {{#link-to "history.item" record.id}}
+          <div class="panel panel-default">
+            <div class="panel-body">
+              {{#if record.featuredImage}}
+                {{#each record.featuredImage as |i|}}
+                  {{render-image src=i.urls.large alt=record.title class="history-t-featuredImage"}}
+                {{/each}}
+              {{else}}
+                {{#if record.videoThumbnail}}
+                  {{render-image src=record.videoThumbnail alt=record.title class="history-t-featuredImage"}}
+                {{/if}}
+              {{/if}}
+              <h2 class="ht-title">{{record.title}}</h2>
+              <div class="ht-creator-meta">
+                {{#if record.historyDate}}
+                  {{we-date record.historyDate}}
+                {{/if}}
+                - {{record.locationText}}
+              </div>
+
+              {{#if record.disciplinas.length}}
+                <div class="ht-disciplinas">
+                  Disciplina(s): {{we-tags tags=record.disciplinas}}
+                </div>
+              {{/if}}
+              {{#if record.temasTransversais.length}}
+                <div class="ht-temasTransversais">
+                  Temas transversais(s): {{we-tags tags=record.temasTransversais}}
+                </div>
+              {{/if}}
+              {{#if record.nivel_ensino.length}}
+                <div class="ht-nivel_ensino">
+                  Nível: {{we-tags tags=record.nivel_ensino}}
+                </div>
+              {{/if}}
+              {{#if record.faixaEtaria.length}}
+                <div class="ht-faixetaria">
+                  Faixa etária(s): {{we-tags tags=record.faixaEtaria}}
+                </div>
+              {{/if}}
+
+              <div class="ht-midia">
+                Mídia: {{#if record.haveText}}<i class="fa fa-text-width" aria-hidden="true"></i>{{/if}}
+                {{#if record.haveImage}}<i class="fa fa-picture-o" aria-hidden="true"></i>{{/if}}
+                {{#if record.haveVideo}}<i class="fa fa-video-camera" aria-hidden="true"></i>{{/if}}
+                {{#if record.haveAudio}}<i class="fa fa-volume-up" aria-hidden="true"></i>{{/if}}
+              </div>
+
+              <div class="ht-creator">
+                <h6 class="ht-creator-displayName">{{record.creatorDisplayName}}</h6>
+                {{#if record.creatorLocationState}}
+                  <span class="ht-creator-location">
+                    {{record.creatorLocationState}}
+                    {{#if record.creatorCity}} / {{record.creatorCity}}{{/if}}
+                  </span>
+                {{/if}}
+              </div>
             </div>
           </div>
-        </div>
-      {{/link-to}}
-    </div>
+        {{/link-to}}
+      </div>
+    {{/each}}
+
   </div>
   <div class="clearfix"></div>
 </div>

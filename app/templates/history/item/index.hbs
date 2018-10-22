@@ -5,26 +5,76 @@
   <li>
     {{#link-to "history"}}Práticas pedagógicas{{/link-to}}
   </li>
-  <li class="active">Projeto boralá</li>
+  <li class="active">
+    {{truncate model.record.title 30}}
+  </li>
 </ol>
 
 <div class="history-findOne">
   <div class="row">
     <div class="col-md-9">
-      <h1 class="history-title">Projeto Boralá</h1>
-      <div class="history-metadata">17/09/2018, SE / Aracaju</div>
+      <h1 class="history-title">{{{model.record.title}}}</h1>
+      <div class="history-metadata">
+        {{#if model.record.historyDate}}
+          {{we-date model.record.historyDate}}
+        {{/if}}
+        - {{model.record.locationText}}
+      </div>
       <div class="history-featuredImage">
-        <img
-          alt="Example1"
-          src="/img/examples/h1/h1_2.jpeg"
-          class="img-responsive img-thumbnail featured-image-findOne"
-        >
+        {{#if model.record.featuredImage}}
+          {{#each model.record.featuredImage as |i|}}
+            {{render-image
+              src=i.urls.large
+              alt=model.record.title
+              class="img-responsive img-thumbnail"
+            }}
+          {{/each}}
+        {{else}}
+          {{#if model.record.videoThumbnail}}
+            {{render-image
+              src=model.record.videoThumbnail
+              alt=model.record.title
+              class="img-responsive img-thumbnail featured-image-findOne"
+            }}
+          {{/if}}
+        {{/if}}
       </div>
-      <div class="history-body">
-        <p>O projeto "boralá" é uma iniciativa do CAPS Liberdade, destinado a usuários com transtorno mental moderado a grave, que acontece todas as sextas feiras no turno da tarde, sob a responsabilidade da Terapeuta Ocupacional Andreza Bezerra e Educadora Física Aparecida Regina, tendo como objetivos possibilitar o convívio social mais amplo, promover atividades de lazer, recreação e reinserção social. Participam do projeto de 8 a 10 usuários, os mesmos sugerem os locais a serem visitados, como: projeto Tamar, parque de sementeira e museu de gente sergipana, etc. Esses passeios estimulam a cultura, interação social, autonomia e independência, além de ser uma atividade prazerosa. Pessoas com transtorno mental se privam do convívio social, o nosso projeto visa resgatar aos poucos o sentimento de pertencimento à sociedade e humanizar os serviços de saúde mental em Aracaju.</p>
-      </div>
+      <br>
+      <div class="history-body">{{{model.record.body}}}</div>
     </div>
     <div class="col-md-3 history-sidebar">
+      <div class="history-cats">
+
+        {{#if model.record.disciplinas.length}}
+          <div class="ht-disciplinas">
+            Disciplina(s): {{we-tags tags=model.record.disciplinas}}
+          </div>
+        {{/if}}
+        {{#if model.record.temasTransversais.length}}
+          <div class="ht-temasTransversais">
+            Temas transversais(s): {{we-tags tags=model.record.temasTransversais}}
+          </div>
+        {{/if}}
+        {{#if model.record.nivel_ensino.length}}
+          <div class="ht-nivel_ensino">
+            Nível: {{we-tags tags=model.record.nivel_ensino}}
+          </div>
+        {{/if}}
+        {{#if model.record.faixaEtaria.length}}
+          <div class="ht-faixetaria">
+            Faixa etária(s): {{we-tags tags=model.record.faixaEtaria}}
+          </div>
+        {{/if}}
+
+        <div class="ht-midia">
+          Mídia: {{#if model.record.haveText}}<i class="fa fa-text-width" aria-hidden="true"></i>{{/if}}
+          {{#if model.record.haveImage}}<i class="fa fa-picture-o" aria-hidden="true"></i>{{/if}}
+          {{#if model.record.haveVideo}}<i class="fa fa-video-camera" aria-hidden="true"></i>{{/if}}
+          {{#if model.record.haveAudio}}<i class="fa fa-volume-up" aria-hidden="true"></i>{{/if}}
+        </div>
+      </div>
+
+
       <div class="history-creator">
         <h3 class="history-creator-displayName">Administrator</h3>
         <div class="user-location-data">
@@ -103,34 +153,41 @@
               </div>
             </div>
           </div>
-          <div
-            id="widget-1"
-            data-record-widget-type="history-more-from-creator"
-            data-model-widget="1"
-            class="widget widget-history-more-from-creator widget-"
-          >
-            <div class="widget-header">
-              <h3>
-                <bind-html model-widget-1="title">Mais histórias</bind-html>
-              </h3>
-            </div>
+          {{#if model.relatedRecord.length}}
             <div
-              class="widget-content"
+              data-record-widget-type="history-more-from-creator"
+              data-model-widget="1"
+              class="widget widget-history-more-from-creator widget-"
             >
-              <div class="hmfc-list">
-                <div class="hmfc-item">
-                  {{#link-to "history.item" 1 class="hmfc-link"}}
-                    <img
-                      alt=""
-                      src="/img/examples/h1/h1_1.jpeg"
-                      class="hmfc-featuredImage img-thumbnail"
-                    >
-                    <h4 class="hmfc-title">Setembro Amarelo: Atividade de valorização a vida...</h4>
-                  {{/link-to}}
+              <div class="widget-header">
+                <h3>Mais histórias</h3>
+              </div>
+              <div
+                class="widget-content"
+              >
+                <div class="hmfc-list">
+                  {{#each model.relatedRecord as |r|}}
+                    <div class="hmfc-item">
+                      {{#link-to "history.item" r.id class="hmfc-link"}}
+
+                        {{#if r.featuredImage}}
+                          {{#each r.featuredImage as |i|}}
+                            {{render-image src=i.urls.large alt=r.title class="hmfc-featuredImage img-thumbnail"}}
+                          {{/each}}
+                        {{else}}
+                          {{#if r.videoThumbnail}}
+                            {{render-image src=r.videoThumbnail alt=r.title class="hmfc-featuredImage img-thumbnail"}}
+                          {{/if}}
+                        {{/if}}
+
+                        <h4 class="hmfc-title">{{truncate r.title 40 }}</h4>
+                      {{/link-to}}
+                    </div>
+                  {{/each}}
                 </div>
               </div>
             </div>
-          </div>
+          {{/if}}
         </div>
       </div>
     </div>

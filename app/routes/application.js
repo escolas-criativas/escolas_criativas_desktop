@@ -1,8 +1,13 @@
 import Route from '@ember/routing/route';
 import { getOwner } from '@ember/application';
 import { hash } from 'rsvp';
+import { inject } from '@ember/service';
 
 export default Route.extend ({
+  news: inject(),
+  history: inject(),
+  learning: inject(),
+
   ENV: null,
 
   init() {
@@ -10,18 +15,16 @@ export default Route.extend ({
     this._super(...arguments);
   },
 
-  beforeModel() {
-    this._super(...arguments);
-
-    return hash({});
-  },
   model() {
     return hash({
       minimumLoadingDelay: new window.Promise( (resolve)=> {
         setTimeout( ()=> {
           resolve();
         }, 300);
-      })
+      }),
+      news: this.get('news').preloadAll(),
+      history: this.get('history').preloadAll(),
+      learning: this.get('learning').preloadAll()
     });
   },
 

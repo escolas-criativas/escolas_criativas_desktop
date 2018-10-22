@@ -28,3 +28,33 @@
   max-width: 322px;
   margin-right: 12px;
 }
+
+.ht-disciplinas,
+.ht-temasTransversais,
+.ht-nivel_ensino,
+.ht-faixetaria,
+.ht-midia {
+  margin-bottom: 6px;
+  color: #000;
+  font-size: 14px;
+}
+
+.ht-midia .fa {
+  border: 1px dashed;
+  padding: 3px 5px;
+  border-radius: 4px;
+}
+
+.we-tag {
+  text-transform: capitalize;
+}
+
+.history-cats .ht-disciplinas,
+.history-cats .ht-temasTransversais,
+.history-cats .ht-nivel_ensino,
+.history-cats .ht-faixetaria,
+.history-cats .ht-midia {
+  margin-bottom: 6px;
+  color: #000;
+  font-size: 18px;
+}

@@ -13,16 +13,23 @@ module.exports = {
   },
   'electronPackagerConfig': {
     'packageManager': 'npm',
-    'icon': 'public/logo.png'
+    'icon': 'public/logo.png',
+    'productName': 'Escolas Criativas Desktop'
   },
   'electronWinstallerConfig': {
-    'name': 'desk'
+    'name': 'desk',
+    'productName': 'Escolas Criativas Desktop'
   },
-  'electronInstallerDebian': {},
-  'electronInstallerRedhat': {},
+  'electronInstallerDebian': {
+    'name': 'escolascriativasdesk',
+    'productName': 'Escolas Criativas Desktop'
+  },
+  'electronInstallerRedhat': {
+    'productName': 'Escolas Criativas Desktop'
+  },
   'github_repository': {
-    'owner': '',
-    'name': ''
+    'owner': 'escolas-criativas',
+    'name': 'escolas_criativas_desktop'
   },
   'windowsStoreConfig': {
     'packageName': '',

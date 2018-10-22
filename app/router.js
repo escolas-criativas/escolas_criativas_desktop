@@ -16,6 +16,9 @@ Router.map(function() {
     this.route('item', { path: ':id' }, function(){});
   });
 
+  this.route('news', function() {
+    this.route('item', { path: ':id' }, function(){});
+  });
 
   this.route('not-found', { path: '/*path' });
 });
