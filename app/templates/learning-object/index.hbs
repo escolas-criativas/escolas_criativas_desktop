@@ -146,10 +146,9 @@
               {{/if}}
               <h2 class="ht-title">{{record.title}}</h2>
               <div class="ht-creator-meta">
-                {{#if record.historyDate}}
-                  {{we-date record.historyDate}}
+                {{#if record.publishedAt}}
+                  {{we-date record.publishedAt}}
                 {{/if}}
-                - {{record.locationText}}
               </div>
 
               {{#if record.disciplinas.length}}

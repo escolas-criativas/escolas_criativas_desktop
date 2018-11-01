@@ -15,10 +15,9 @@
     <div class="col-md-9">
       <h1 class="history-title">{{{model.record.title}}}</h1>
       <div class="history-metadata">
-        {{#if model.record.historyDate}}
-          {{we-date model.record.historyDate}}
+        {{#if model.record.publishedAt}}
+          {{we-date model.record.publishedAt}}
         {{/if}}
-        - {{model.record.locationText}}
       </div>
       <div class="history-featuredImage">
         {{#if model.record.featuredImage}}
@@ -39,7 +38,7 @@
           {{/if}}
         {{/if}}
       </div>
-      <br>
+
       <div class="history-body">{{{model.record.body}}}</div>
 
       <div class="clearfix"></div>
