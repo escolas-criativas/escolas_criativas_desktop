@@ -14,7 +14,6 @@ export default Service.extend({
 
     fs.readFile(p, 'utf8', function(err, contents) {
       if (err) {
-        // console.error('err>', err);
         return cb(null, []);
       }
 
@@ -28,7 +27,6 @@ export default Service.extend({
         });
       }, (err, results)=> {
         if (err) return cb(err);
-
         cb(null, results);
       });
 

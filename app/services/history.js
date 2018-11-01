@@ -26,9 +26,58 @@ export default Service.extend({
     });
   },
 
-  getAll() {
+  getAll(params) {
     return new Promise( (resolve)=> {
-      resolve(this.records);
+      if (!params) {
+        return resolve(this.records);
+      }
+
+      return resolve(this.records.filter( (r)=> {
+        if (params.haveText && !r.haveText) return false;
+        if (params.haveImage && !r.haveImage) return false;
+        if (params.haveVideo && !r.haveVideo) return false;
+        if (params.haveAudio && !r.haveAudio) return false;
+
+        if (params.disciplinas) {
+          if (
+            (!r.disciplinas || !r.disciplinas.length) ||
+            (r.disciplinas.indexOf(params.disciplinas) == -1)
+          ) {
+            return false;
+          }
+        }
+
+        if (params.temas) {
+          if (
+            (!r.temas || !r.temas.length) ||
+            (r.temas.indexOf(params.temas) == -1)
+          ) {
+            return false;
+          }
+        }
+
+        if (params.faixaEtaria) {
+          if (
+            (!r.faixaEtaria || !r.faixaEtaria.length) ||
+            (r.faixaEtaria.indexOf(params.faixaEtaria) == -1)
+          ) {
+            return false;
+          }
+        }
+
+        if (params.q) {
+          if (
+            (!r.title || r.title.indexOf(params.q) == -1) &&
+            (!r.body || r.body.indexOf(params.q) == -1)
+          ) {
+            return false;
+          }
+        }
+
+        return true;
+
+      }));
+
     });
   },
   getOneById(id) {

@@ -14,7 +14,7 @@
     </div>
 
     <div class="history-search">
-      <form class="form-inline">
+      <form class="form-inline" {{action "doSearch" on="submit"}}>
         <div class="row">
           <div class="col-sm-12 col-md-12 col-ls-12">
             <div class="form-group">
@@ -25,7 +25,7 @@
                 name="q"
                 class="form-control"
                 placeholder="Buscar no título ou texto ..."
-                value=""
+                value="{{q}}"
               >
             </div>
           </div>
@@ -33,79 +33,45 @@
             <div class="form-group">
               <label>Disciplinas: </label>
 
-              <select name="disciplinas" class="form-control">
+              <select name="disciplinas" class="form-control" onchange={{action 'setSelectVal' 'disciplinas'}}>
                 <option value="">Qualquer</option>
-                <option value="artes">artes</option>
-                <option value="biologia">biologia</option>
-                <option value="ciências">ciências</option>
-                <option value="ciências sociais">ciências sociais</option>
-                <option value="educação artistica">educação artistica</option>
-                <option value="educação física">educação física</option>
-                <option value="filosofia">filosofia</option>
-                <option value="fisica">fisica</option>
-                <option value="geografia">geografia</option>
-                <option value="história">história</option>
-                <option value="inglês">inglês</option>
-                <option value="língua portuguesa">língua portuguesa</option>
-                <option value="literatura">literatura</option>
-                <option value="matemática">matemática</option>
-                <option value="música">música</option>
-                <option value="quimica">quimica</option>
-                <option value="sociologia">sociologia</option>
-                <option value="teatro">teatro</option>
+                {{#each-in disciplinasOptions as |key d|}}
+                  {{#if (eq disciplinas d)}}
+                    <option value="{{key}}" selected="selected">{{d}}</option>
+                  {{else}}
+                    <option value="{{key}}">{{d}}</option>
+                  {{/if}}
+                {{/each-in}}
               </select>
             </div>
 
             <div class="form-group">
               <label>Temas: </label>
 
-              <select name="temasTransversais" class="form-control">
+              <select name="temasTransversais" class="form-control" onchange={{action 'setSelectVal' 'temasTransversais'}}>
                 <option value="">Qualquer</option>
-                <option value="antropologia">antropologia</option>
-                <option value="cidadania">cidadania</option>
-                <option value="ciências naturais">ciências naturais</option>
-                <option value="comunicação">comunicação</option>
-                <option value="cultura de massa">cultura de massa</option>
-                <option value="discriminação e preconceito racial">discriminação e preconceito racial</option>
-                <option value="diversidade">diversidade</option>
-                <option value="economia">economia</option>
-                <option value="educação ambiental">educação ambiental</option>
-                <option value="ética">ética</option>
-                <option value="família">família</option>
-                <option value="geologia">geologia</option>
-                <option value="gerontologia">gerontologia</option>
-                <option value="inclusão/deficiências">inclusão/deficiências</option>
-                <option value="meio ambiente">meio ambiente</option>
-                <option value="MPB">MPB</option>
-                <option value="orientação sexual">orientação sexual</option>
-                <option value="orientação sexual">orientação sexual</option>
-                <option value="pedagogia">pedagogia</option>
-                <option value="pluralidade cultural">pluralidade cultural</option>
-                <option value="política">política</option>
-                <option value="psicologia">psicologia</option>
-                <option value="redação">redação</option>
-                <option value="relações de gênero">relações de gênero</option>
-                <option value="saúde">saúde</option>
-                <option value="sexualidade">sexualidade</option>
-                <option value="tecnologias">tecnologias</option>
-                <option value="tecnologias da informação">tecnologias da informação</option>
-                <option value="temas locais">temas locais</option>
-                <option value="trabalho e consumo">trabalho e consumo</option>
+                {{#each-in temasOptions as |key d|}}
+                  {{#if (eq temas d)}}
+                    <option value="{{key}}" selected="selected">{{d}}</option>
+                  {{else}}
+                    <option value="{{key}}">{{d}}</option>
+                  {{/if}}
+                {{/each-in}}
               </select>
             </div>
 
             <div class="form-group">
               <label>Faixa etária: </label>
 
-              <select name="faixaEtaria" class="form-control">
+              <select name="faixaEtaria" class="form-control" onchange={{action 'setSelectVal' 'faixaEtaria'}}>
                 <option value="">Qualquer</option>
-                <option value="a partir de 14 anos">a partir de 14 anos</option>
-                <option value="acima de 18 anos">acima de 18 anos</option>
-                <option value="de 10 a 14 anos">de 10 a 14 anos</option>
-                <option value="de 14 a 18 anos">de 14 a 18 anos</option>
-                <option value="de 3 a 7 anos">de 3 a 7 anos</option>
-                <option value="de 7 a 10 anos">de 7 a 10 anos</option>
-                <option value="todas as idades">todas as idades</option>
+                {{#each-in faixaEtariaOptions as |key d|}}
+                  {{#if (eq faixaEtaria d)}}
+                    <option value="{{key}}" selected="selected">{{d}}</option>
+                  {{else}}
+                    <option value="{{key}}">{{d}}</option>
+                  {{/if}}
+                {{/each-in}}
               </select>
             </div>
           </div>
@@ -115,22 +81,38 @@
               <label>Mídia: </label>
               <div class="checkbox">
                 <label>
-                  <input name="haveImage" type="checkbox"> Imagem
+                  {{input
+                    name="haveImage"
+                    type="checkbox"
+                    checked=haveImage
+                  }} Imagem
                 </label>
               </div>
               <div class="checkbox">
                 <label>
-                  <input name="haveVideo" type="checkbox"> Vídeo
+                  {{input
+                    name="haveVideo"
+                    type="checkbox"
+                    checked=haveVideo
+                  }} Vídeo
                 </label>
               </div>
               <div class="checkbox">
                 <label>
-                  <input name="haveAudio" type="checkbox"> Audio
+                  {{input
+                    name="haveAudio"
+                    type="checkbox"
+                    checked=haveAudio
+                  }} Audio
                 </label>
               </div>
               <div class="checkbox">
                 <label>
-                  <input name="haveText" type="checkbox"> Texto
+                  {{input
+                    name="haveText"
+                    type="checkbox"
+                    checked=haveText
+                  }} Texto
                 </label>
               </div>
             </div>
@@ -148,7 +130,7 @@
   </div>
 
   <div class="list">
-    {{#each model.records as |record|}}
+    {{#each pagedContent as |record|}}
       <div class="d-col">
         {{#link-to "history.item" record.id}}
           <div class="panel panel-default">
@@ -215,4 +197,6 @@
 
   </div>
   <div class="clearfix"></div>
+
+  {{page-numbers content=pagedContent}}
 </div>

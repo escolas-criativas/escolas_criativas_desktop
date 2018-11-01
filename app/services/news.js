@@ -13,7 +13,7 @@ export default Service.extend({
     return new Promise( (resolve, reject)=> {
       cached.getItems('news', (err, items)=> {
         if (err) return reject (err);
-        cached.set('records', items);
+        this.set('records', items);
 
         this.recordsByIds = {};
 
@@ -27,11 +27,24 @@ export default Service.extend({
   },
 
   getAll() {
-
+    return new Promise( (resolve)=> {
+      resolve(this.records);
+    });
   },
   getOneById(id) {
     return new Promise( (resolve)=> {
       resolve(this.recordsByIds[id]);
+    });
+  },
+
+  getRelatedRecords(id) {
+    return new Promise( (resolve)=> {
+      let r = this.records.random();
+      if (r.id == id) {
+        return resolve([]);
+      }
+
+      resolve([r]);
     });
   }
 });

@@ -67,8 +67,15 @@ app.on('ready', () => {
   });
 });
 
+
 app.on('browser-window-created',function(e,window) {
-  window.setMenu(null);
+
+  if (process.env.NODE_ENV == 'development') {
+    process.env.ELECTRON_ENABLE_LOGGING = true;
+  } else {
+    window.setMenu(null);
+  }
+
 });
 
 // Handle an unhandled error in the main thread

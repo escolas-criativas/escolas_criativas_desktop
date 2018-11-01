@@ -58,3 +58,12 @@
   color: #000;
   font-size: 18px;
 }
+
+.history-videos {
+  margin-top: 15px;
+}
+
+.history-videos h4 {
+  font-size: 25px;
+  font-weight: bold;
+}

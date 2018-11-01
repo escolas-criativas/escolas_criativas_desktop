@@ -3,7 +3,7 @@
     {{#link-to "index"}}Início{{/link-to}}
   </li>
   <li>
-    {{#link-to "history"}}Práticas pedagógicas{{/link-to}}
+    {{#link-to "learning-object"}}Objetos de aprendizagem{{/link-to}}
   </li>
   <li class="active">
     {{truncate model.record.title 30}}
@@ -187,7 +187,7 @@
                 <div class="hmfc-list">
                   {{#each model.relatedRecord as |r|}}
                     <div class="hmfc-item">
-                      {{#link-to "history.item" r.id class="hmfc-link"}}
+                      {{#link-to "learning-object.item" r.id class="hmfc-link"}}
 
                         {{#if r.featuredImage}}
                           {{#each r.featuredImage as |i|}}

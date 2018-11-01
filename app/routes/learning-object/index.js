@@ -3,7 +3,7 @@ import { hash } from 'rsvp';
 import { inject } from '@ember/service';
 
 export default Route.extend ({
-  history: inject(),
+  learning: inject(),
 
   queryParams: {
     searchTime: {
@@ -25,7 +25,7 @@ export default Route.extend ({
 
   model(params) {
     return hash({
-      records: this.get('history').getAll(params)
+      records: this.get('learning').getAll(params)
     });
   },
 

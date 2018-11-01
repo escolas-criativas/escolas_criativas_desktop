@@ -6,3 +6,197 @@
   </li>
   <li class="active">Objetos de aprendizagem</li>
 </ol>
+
+<div class="history-findAll">
+  <div class="history-findAll-header">
+    <div class="page-header">
+      <h2 class="hfah-title headline">Objetos de aprendizagem</h2>
+    </div>
+
+    <div class="history-search">
+      <form class="form-inline" {{action "doSearch" on="submit"}}>
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-ls-12">
+            <div class="form-group">
+              <label for="search-q">Filtro: </label>
+              <input
+                type="text"
+                id="search-q"
+                name="q"
+                class="form-control"
+                placeholder="Buscar no título ou texto ..."
+                value="{{q}}"
+              >
+            </div>
+          </div>
+          <div class="seccond-line col-sm-12 col-md-12 col-ls-12">
+            <div class="form-group">
+              <label>Disciplinas: </label>
+
+              <select name="disciplinas" class="form-control" onchange={{action 'setSelectVal' 'disciplinas'}}>
+                <option value="">Qualquer</option>
+                {{#each-in disciplinasOptions as |key d|}}
+                  {{#if (eq disciplinas d)}}
+                    <option value="{{key}}" selected="selected">{{d}}</option>
+                  {{else}}
+                    <option value="{{key}}">{{d}}</option>
+                  {{/if}}
+                {{/each-in}}
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Temas: </label>
+
+              <select name="temasTransversais" class="form-control" onchange={{action 'setSelectVal' 'temasTransversais'}}>
+                <option value="">Qualquer</option>
+                {{#each-in temasOptions as |key d|}}
+                  {{#if (eq temas d)}}
+                    <option value="{{key}}" selected="selected">{{d}}</option>
+                  {{else}}
+                    <option value="{{key}}">{{d}}</option>
+                  {{/if}}
+                {{/each-in}}
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Faixa etária: </label>
+
+              <select name="faixaEtaria" class="form-control" onchange={{action 'setSelectVal' 'faixaEtaria'}}>
+                <option value="">Qualquer</option>
+                {{#each-in faixaEtariaOptions as |key d|}}
+                  {{#if (eq faixaEtaria d)}}
+                    <option value="{{key}}" selected="selected">{{d}}</option>
+                  {{else}}
+                    <option value="{{key}}">{{d}}</option>
+                  {{/if}}
+                {{/each-in}}
+              </select>
+            </div>
+          </div>
+
+          <div class="seccond-line col-sm-12 col-md-12 col-ls-12">
+            <div class="form-group">
+              <label>Mídia: </label>
+              <div class="checkbox">
+                <label>
+                  {{input
+                    name="haveImage"
+                    type="checkbox"
+                    checked=haveImage
+                  }} Imagem
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  {{input
+                    name="haveVideo"
+                    type="checkbox"
+                    checked=haveVideo
+                  }} Vídeo
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  {{input
+                    name="haveAudio"
+                    type="checkbox"
+                    checked=haveAudio
+                  }} Audio
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  {{input
+                    name="haveText"
+                    type="checkbox"
+                    checked=haveText
+                  }} Texto
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <button class="btn btn-default" type="submit">
+                <span class="fa fa-search"></span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="list">
+    {{#each pagedContent as |record|}}
+      <div class="d-col">
+        {{#link-to "learning-object.item" record.id}}
+          <div class="panel panel-default">
+            <div class="panel-body">
+              {{#if record.featuredImage}}
+                {{#each record.featuredImage as |i|}}
+                  {{render-image src=i.urls.large alt=record.title class="history-t-featuredImage"}}
+                {{/each}}
+              {{else}}
+                {{#if record.videoThumbnail}}
+                  {{render-image src=record.videoThumbnail alt=record.title class="history-t-featuredImage"}}
+                {{/if}}
+              {{/if}}
+              <h2 class="ht-title">{{record.title}}</h2>
+              <div class="ht-creator-meta">
+                {{#if record.historyDate}}
+                  {{we-date record.historyDate}}
+                {{/if}}
+                - {{record.locationText}}
+              </div>
+
+              {{#if record.disciplinas.length}}
+                <div class="ht-disciplinas">
+                  Disciplina(s): {{we-tags tags=record.disciplinas}}
+                </div>
+              {{/if}}
+              {{#if record.temasTransversais.length}}
+                <div class="ht-temasTransversais">
+                  Temas transversais(s): {{we-tags tags=record.temasTransversais}}
+                </div>
+              {{/if}}
+              {{#if record.nivel_ensino.length}}
+                <div class="ht-nivel_ensino">
+                  Nível: {{we-tags tags=record.nivel_ensino}}
+                </div>
+              {{/if}}
+              {{#if record.faixaEtaria.length}}
+                <div class="ht-faixetaria">
+                  Faixa etária(s): {{we-tags tags=record.faixaEtaria}}
+                </div>
+              {{/if}}
+
+              <div class="ht-midia">
+                Mídia: {{#if record.haveText}}<i class="fa fa-text-width" aria-hidden="true"></i>{{/if}}
+                {{#if record.haveImage}}<i class="fa fa-picture-o" aria-hidden="true"></i>{{/if}}
+                {{#if record.haveVideo}}<i class="fa fa-video-camera" aria-hidden="true"></i>{{/if}}
+                {{#if record.haveAudio}}<i class="fa fa-volume-up" aria-hidden="true"></i>{{/if}}
+              </div>
+
+              <div class="ht-creator">
+                <h6 class="ht-creator-displayName">{{record.creatorDisplayName}}</h6>
+                {{#if record.creatorLocationState}}
+                  <span class="ht-creator-location">
+                    {{record.creatorLocationState}}
+                    {{#if record.creatorCity}} / {{record.creatorCity}}{{/if}}
+                  </span>
+                {{/if}}
+              </div>
+            </div>
+          </div>
+        {{/link-to}}
+      </div>
+    {{/each}}
+
+  </div>
+  <div class="clearfix"></div>
+
+  {{page-numbers content=pagedContent}}
+</div>
