@@ -1,0 +1,13 @@
+.btn-home-pp,
+.btn-home-lo {
+  color: #fff;
+  font-size: 22px;
+}
+
+.btn-home-lo {
+  background-color: #572C76;
+}
+
+.btn-home-pp {
+  background-color: #d13995;
+}

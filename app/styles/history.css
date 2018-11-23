@@ -67,3 +67,18 @@
   font-size: 25px;
   font-weight: bold;
 }
+
+.seccond-line select,
+.seccond-line input {
+  margin-right: 5px;
+}
+
+
+.search-button {
+  color:  #fff;
+  background-color: #572C76;
+}
+
+.history-featuredImage {
+  margin-bottom: 10px;
+}
